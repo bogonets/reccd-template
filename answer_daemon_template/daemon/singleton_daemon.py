@@ -12,6 +12,3 @@ class SingletonDaemon:
         if not hasattr(cls, "__singleton_instance__"):
             setattr(cls, "__singleton_instance__", Daemon())
         return cls.__singleton_instance__
-
-    def __init__(self):
-        pass
