@@ -8,5 +8,5 @@ ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd)
      --cov-report=term-missing \
      --cov-report=html \
      --cov-config="${ROOT_DIR}/pytest.ini" \
-     "$ROOT_DIR/test/"
+     "$ROOT_DIR/test/" \
      "$@"
