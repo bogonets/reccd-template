@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-SOURCE_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd)
+ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd)
 
 export PYTHONPATH
-PYTHONPATH="$SOURCE_DIR:$PYTHONPATH"
+PYTHONPATH=$ROOT_DIR:$PYTHONPATH
 
 OPY_PATH=$(which opy 2> /dev/null)
 PYTHON3_PATH=$(which python3 2> /dev/null)

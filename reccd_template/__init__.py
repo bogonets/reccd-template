@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from dataclasses import dataclass
 from typing import Callable, List, Tuple
-
-from answer_daemon_template.daemon.singleton_daemon import SingletonDaemon
 
 __version__ = "0.0.1"
 """
@@ -10,14 +9,9 @@ The plug-in version must be specified. Use the semantic versioning specification
 e.g. `MAJOR.MINOR.PATCH`
 """
 
-__doc__ = "Answer Daemon Template Project"
+__doc__ = "Documentation"
 """
-The daemon's documentation string.
-"""
-
-__recc_spec__ = {}
-"""
-A specification dictionary for the recc daemon.
+The module's documentation string.
 """
 
 
@@ -25,21 +19,38 @@ async def on_open() -> None:
     """
     An asynchronous constructor event that runs in the main event loop.
     """
-    await SingletonDaemon.get().on_open()
+    print("Module 'open' event")
 
 
 async def on_close() -> None:
     """
     An asynchronous destructor event that runs in the main event loop.
     """
-    await SingletonDaemon.get().on_close()
+    print("Module 'close' event")
+
+
+@dataclass
+class EchoQ:
+    msg: str
+
+
+@dataclass
+class EchoA:
+    msg: str
+
+
+async def post_echo(body: EchoQ) -> EchoA:
+    print(f"Echo message:'{body.msg}'")
+    return EchoA(body.msg)
 
 
 def on_routes() -> List[Tuple[str, str, Callable]]:
     """
     It should return a routing table that can accept HTTP requests.
     """
-    return SingletonDaemon.get().on_routes()
+    return [
+        ("POST", "/echo", post_echo),
+    ]
 
 
 if __name__ == "__main__":

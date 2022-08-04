@@ -2,10 +2,9 @@
 
 ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd)
 
-rm -rf \
+rm -vrf \
+    "$ROOT_DIR/.mypy_cache/" \
+    "$ROOT_DIR/.pytest_cache/" \
     "$ROOT_DIR/build/" \
     "$ROOT_DIR/dist/" \
-    "$ROOT_DIR/answer_daemon_template.egg-info/"
-
-# Remove all '*.c' files.
-find "$ROOT_DIR/answer_daemon_template" -name "*.c" -exec rm '{}' \;
+    "$ROOT_DIR/reccd_template.egg-info/"

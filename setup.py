@@ -1,25 +1,23 @@
 # -*- coding: utf-8 -*-
 
-from setup_utils import (
-    PACKAGE_NAME,
-    default_package_data,
-    default_packages,
-    default_requirements,
-    default_version,
-)
+import os
+from typing import List
+
 from setuptools import setup
 
+SOURCE_PATH = os.path.abspath(__file__)
+SOURCE_DIR = os.path.dirname(SOURCE_PATH)
+REQUIREMENTS_MAIN = os.path.join(SOURCE_DIR, "requirements.main.txt")
 
-def setup_main():
-    setup(
-        name=PACKAGE_NAME,
-        version=default_version(),
-        packages=default_packages(),
-        package_dir={PACKAGE_NAME: PACKAGE_NAME},
-        package_data={PACKAGE_NAME: default_package_data()},
-        install_requires=default_requirements(),
-    )
+
+def install_requires(encoding="utf-8") -> List[str]:
+    with open(REQUIREMENTS_MAIN, encoding=encoding) as f:
+        content = f.read()
+    lines0 = content.split("\n")
+    lines1 = map(lambda x: x.strip(), lines0)
+    lines2 = filter(lambda x: x and x[0] != "#", lines1)
+    return list(lines2)
 
 
 if __name__ == "__main__":
-    setup_main()
+    setup(install_requires=install_requires())
