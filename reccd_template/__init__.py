@@ -29,19 +29,9 @@ async def on_close() -> None:
     print("Module 'close' event")
 
 
-@dataclass
-class EchoQ:
-    msg: str
-
-
-@dataclass
-class EchoA:
-    msg: str
-
-
-async def post_echo(body: EchoQ) -> EchoA:
-    print(f"Echo message:'{body.msg}'")
-    return EchoA(body.msg)
+async def post_echo(msg: str) -> str:
+    print(f"Echo message:'{msg}'")
+    return msg
 
 
 def on_routes() -> List[Tuple[str, str, Callable]]:
