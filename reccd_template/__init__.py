@@ -2,7 +2,7 @@
 
 from typing import Callable, List, Tuple
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 """
 The plug-in version must be specified. Use the semantic versioning specification.
 e.g. `MAJOR.MINOR.PATCH`
