@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from dataclasses import dataclass
 from typing import Callable, List, Tuple
 
 __version__ = "0.0.1"
