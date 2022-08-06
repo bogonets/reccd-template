@@ -5,13 +5,14 @@ ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" || exit; pwd)
 read -r -p "Please enter a daemon name: reccd-" DAEMON_NAME
 
 FULLNAME_INIT_FILES=(
+    "$ROOT_DIR/README.md"
     "$ROOT_DIR/black.sh"
+    "$ROOT_DIR/clean.sh"
     "$ROOT_DIR/flake8.sh"
     "$ROOT_DIR/isort.cfg"
     "$ROOT_DIR/isort.sh"
     "$ROOT_DIR/mypy.sh"
     "$ROOT_DIR/pytest.ini"
-    "$ROOT_DIR/README.md"
     "$ROOT_DIR/setup.cfg"
     "$ROOT_DIR/uninstall.sh"
 )
